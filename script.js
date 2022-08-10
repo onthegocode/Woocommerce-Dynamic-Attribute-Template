@@ -7,6 +7,7 @@ const checkout = {
   checkout.ship.forEach(mov => document.getElementById(mov).value="");
   document.getElementById('ship-to-different-address-checkbox').checked = false;
 
+//Old Code
 //Variables
 //Billing
 // const firstName = document.getElementById("billing_first_name");
