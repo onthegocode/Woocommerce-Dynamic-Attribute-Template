@@ -118,7 +118,7 @@ function recurse_cat($cat)
 <!-- 			USA		Short Code	 -->
 <div class="usa-form--container1">
   	<h5 class="usa-form--container1-head">USA Made</h5>
-	<?php echo do_shortcode('[searchandfilter id="usa"]');?>
+	<input type="checkbox" id="switch" class="made__in--usa-input1" /><label for="switch" class="made__in--usa-label1">Toggle</label>
 </div>
                         <div class="ssb-categories text-center">
                             <?php												
@@ -246,15 +246,120 @@ function recurse_cat($cat)
         </div>
     </div>
 </section>
-<script defer>
-	const madeInTheUSAInput = document.getElementById('wpf_usa_6391');
-	const madeInTheUSALabel = document.querySelector('.wpf_product_tag_6391').querySelector('label');
+<script>
+	const usaMadeInInput = document.querySelector('.made__in--usa-input1');
+	const madeInTheUSAInput = document.querySelector('.made__in--usa-label1');
 	const madeInUSACount = document.querySelector('.wpf_item_count');
-	madeInUSACount.style.display = 'none';
-	madeInTheUSALabel.classList.add('made__in--usa-label1');
-	madeInTheUSAInput.classList.add('made__in--usa-input1');
+	let usaSwitchFunc = () => {document.querySelector('.iCheck-helper').click();
+							  };
+	if(document.querySelector('.woof_checkbox_term_6391').checked) {
+								  usaMadeInInput.checked = true;
+							  } else {
+								    usaMadeInInput.checked = false;
+							  }
+	madeInTheUSAInput.addEventListener('click', usaSwitchFunc);
+	// Check on load
+// window.onload = function() {
+//   $(function(){
+//     var test = localStorage.usaMadeInInput === 'true'? true: false;
+//     $('input').prop('checked', test || false);
+// 	});
+
+// 	$('input').on('change', function() {
+// 		localStorage.usaMadeInInput = $(this).is(':checked');
+// 		console.log($(this).is(':checked'));
+// 	});
+// };
+
+// 	CHECKBOX
+let isUSACheck;
+	if(window.location.href === 'https://typkup.com/shop/') {
+		isUSACheck = false;
+	} else {
+		isUSACheck = JSON.parse(localStorage.getItem('isUSACheck')) === true ? true : window.location.href.indexOf('product_tag=usa') > 0 ? true : false;
+	}
+localStorage.setItem('isUSACheck', isUSACheck)
+console.log(isUSACheck);
+let isUSACheck_d = JSON.parse(localStorage.getItem('isUSACheck'));	
+	if(isUSACheck_d && window.location.href.indexOf('product_tag=usa') < 0 ) {
+	window.location.replace(window.location.href+'?swoof=1&product_tag=usa');
+}
+
+	
+// if (document.getElementById('switch').checked && window.location.href.indexOf('product_tag=usa') < 0) {
+// 	window.location.assign(window.location.href+"/?swoof=1&product_tag=usa");
+// 	console.log(window.location.href);
+// 	console.log(document.getElementById('switch').checked)
+// 	} else {
+// 		console.log(window.location.href);
+// 		console.log(document.getElementById('switch').checked)
+// }
 </script>
+
 <style>
-.made__in--usa-input1[type=checkbox]{height:0;width:0;visibility:hidden;display:none!important}.made__in--usa-label1{cursor:pointer;text-indent:-9999px;width:60px;height:30px;background:grey;display:block;border-radius:100px;position:relative}.made__in--usa-label1:after{content:'';position:absolute;top:5px;left:5px;width:20px;height:20px;background:#fff;border-radius:90px;transition:.3s}.made__in--usa-input1:checked + .made__in--usa-label1{background:#182c69}.made__in--usa-input1:checked + .made__in--usa-label1:after{left:calc(100% - 5px);transform:translateX(-100%)}.made__in--usa-label1:active:after{width:30px}.wpf_item_wpf_tag{padding:0!important}.usa-form--container1{display:flex;justify-content:space-between;align-items:center;padding:2rem 0}.wpf_product_tag_6391{margin:0!important}.usa-form--container1-head{font-family:inherit;color:#182c69;font-size:22px;margin-bottom:16px}
+	.woof_show_auto_form  {
+		display: none !important;
+		
+	}
+.made__in--usa-input1[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+	display: none !important;
+}
+
+.made__in--usa-label1 {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 60px;
+	height: 30px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.made__in--usa-label1:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.made__in--usa-input1:checked + .made__in--usa-label1 {
+	background: #182c69;
+}
+
+.made__in--usa-input1:checked + .made__in--usa-label1:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+.made__in--usa-label1:active:after {
+	width: 30px;
+}
+	.wpf_item_wpf_tag {
+		padding: 0 !important;
+	}
+	.usa-form--container1{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 2rem 0;
+	}
+	.wpf_product_tag_6391 {
+		margin: 0 !important;
+	}
+	.usa-form--container1-head {
+  font-family: inherit;
+  color: #182c69;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
 </style>
 <?php get_footer( 'shop' ); ?>
