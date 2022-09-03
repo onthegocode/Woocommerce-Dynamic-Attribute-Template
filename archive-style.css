@@ -1,0 +1,63 @@
+.woof_show_auto_form  {
+		display: none !important;
+}
+.made__in--usa-input1[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+	display: none !important;
+}
+
+.made__in--usa-label1 {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 60px;
+	height: 30px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.made__in--usa-label1:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.made__in--usa-input1:checked + .made__in--usa-label1 {
+	background: #182c69;
+}
+
+.made__in--usa-input1:checked + .made__in--usa-label1:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+.made__in--usa-label1:active:after {
+	width: 30px;
+}
+.wpf_item_wpf_tag {
+  padding: 0 !important;
+}
+.usa-form--container1{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+.wpf_product_tag_6391 {
+  margin: 0 !important;
+}
+.usa-form--container1-head {
+  font-family: inherit;
+  color: #182c69;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
