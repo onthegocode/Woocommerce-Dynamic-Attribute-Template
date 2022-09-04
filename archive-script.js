@@ -1,7 +1,7 @@
 const usaMadeInInput = document.querySelector('.made__in--usa-input1');
 const madeInTheUSAInput = document.querySelector('.made__in--usa-label1');
 const madeInUSACount = document.querySelector('.wpf_item_count');
-let usaSwitchFunc = () => {document.querySelector('.iCheck-helper').click();
+let usaSwitchFunc = () => {document.querySelector('.iCheck-helper')?.click();
 							  };
 // 	if(document.querySelector('.woof_checkbox_term_6391').checked) {
 // 								  usaMadeInInput.checked = true;
@@ -42,10 +42,11 @@ if (window.location.href.indexOf('product_tag=usa') > 0) {
     madeInTheUSAInput.addEventListener('click', () => {
 		isUSACheck = false; 
 		localStorage.setItem('isUSACheck', isUSACheck);
-		if (window.location.href.indexOf('product_tag=usa&really_curr_tax=') > 0) {
+		if (window.location.href.indexOf('&really_curr_tax=') > 0) {
 // 			console.log(true);
+			window.location.replace(window.location.href.split('?')[0]);
 		} else {
-			window.location.assign(window.location.href.replace('?swoof=1&product_tag=usa',''));
+			window.location.assign(window.location.href.split('?')[0]);
 		}	
 	});
 }
