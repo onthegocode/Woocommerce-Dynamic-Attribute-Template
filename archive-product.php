@@ -78,9 +78,9 @@ function recurse_cat($cat)
 	}
 	
 	$highlight = $cat->highlight == 1 ? "foldable-highlight" : ""; // Determine which is the current category and highlight it	
-	$expand = $cat->expand != 1 ? "foldable-sub" : ""; // Expand all the parents of the current category
+	$expand = $cat->expand != 1 ? "foldable-sub test" : ""; // Expand all the parents of the current category
 	echo "<ul class='thisismytestclass'><li class='foldable foldable-list $highlight' target='{$cat->term_id}'><a href='$cat_url'>$cat_lowercase_name</a> $cat_icon</li>\n";
-	echo "<li id='cat{$cat->term_id}' class='$expand foldable-list'>";
+	echo "<li id='cat{$cat->term_id}' class='$expand foldable-list {$cat->description}'>";
 	
 	// End condition
 	if($cat_size == 0)
@@ -98,10 +98,7 @@ function recurse_cat($cat)
 } 
 ?>
 <style>
-.woof_show_auto_form{display:none!important}.made__in--usa-input1[type=checkbox]{height:0;width:0;visibility:hidden;display:none!important}.made__in--usa-label1{cursor:pointer;text-indent:-9999px;width:60px;height:30px;background:grey;display:block;border-radius:100px;position:relative}.made__in--usa-label1:after{content:'';position:absolute;top:5px;left:5px;width:20px;height:20px;background:#fff;border-radius:90px;transition:.3s}.made__in--usa-input1:checked + .made__in--usa-label1{background:#182c69}.made__in--usa-input1:checked + .made__in--usa-label1:after{left:calc(100% - 5px);transform:translateX(-100%)}.made__in--usa-label1:active:after{width:30px}.wpf_item_wpf_tag{padding:0!important}.usa-form--container1{display:flex;justify-content:space-between;align-items:center;padding:2rem 0}.wpf_product_tag_6391{margin:0!important}.usa-form--container1-head{font-family:inherit;color:#182c69;font-size:22px;margin-bottom:16px}
-	.foldable-text span{
-		display: none;
-	}
+.woof_show_auto_form{display:none!important}.made__in--usa-input1[type=checkbox]{height:0;width:0;visibility:hidden;display:none!important}.made__in--usa-label1{cursor:pointer;text-indent:-9999px;width:60px;height:30px;background:grey;display:block;border-radius:100px;position:relative}.made__in--usa-label1:after{content:'';position:absolute;top:5px;left:5px;width:20px;height:20px;background:#fff;border-radius:90px;transition:.3s}.made__in--usa-input1:checked + .made__in--usa-label1{background:#182c69}.made__in--usa-input1:checked + .made__in--usa-label1:after{left:calc(100% - 5px);transform:translateX(-100%)}.made__in--usa-label1:active:after{width:30px}.wpf_item_wpf_tag{padding:0!important}.usa-form--container1{display:flex;justify-content:space-between;align-items:center;padding:2rem 0}.wpf_product_tag_6391{margin:0!important}.usa-form--container1-head{font-family:inherit;color:#182c69;font-size:22px;margin-bottom:16px}.foldable-text span{display:none}
 </style>
 <section class="page-header">shop</section>
 <section class="content-section">
@@ -127,63 +124,7 @@ function recurse_cat($cat)
 	<input type="checkbox" id="switch" class="made__in--usa-input1" /><label for="switch" class="made__in--usa-label1">Toggle</label>
 </div>
 <script>
-const usaMadeInInput = document.querySelector('.made__in--usa-input1');
-const madeInTheUSAInput = document.querySelector('.made__in--usa-label1');
-const madeInUSACount = document.querySelector('.wpf_item_count');
-let usaSwitchFunc = () => {document.querySelector('.iCheck-helper').click();
-							  };
-// 	if(document.querySelector('.woof_checkbox_term_6391').checked) {
-// 								  usaMadeInInput.checked = true;
-// 							  } else {
-// 								    usaMadeInInput.checked = false;
-// 							  }
-madeInTheUSAInput.addEventListener('click', usaSwitchFunc);
-	// Check on load
-// window.onload = function() {
-//   $(function(){
-//     var test = localStorage.usaMadeInInput === 'true'? true: false;
-//     $('input').prop('checked', test || false);
-// 	});
-
-// 	$('input').on('change', function() {
-// 		localStorage.usaMadeInInput = $(this).is(':checked');
-// 		console.log($(this).is(':checked'));
-// 	});
-// };
-
-// 	CHECKBOX
-let isUSACheck;
-if(window.location.href === 'https://typkup.com/shop/' ) {
-  isUSACheck = false;
-} else {
-  isUSACheck = JSON.parse(localStorage.getItem('isUSACheck')) === true ? true : window.location.href.indexOf('product_tag=usa') > 0 ? true : false;
-}
-localStorage.setItem('isUSACheck', isUSACheck)
-console.log(isUSACheck);
-document.querySelector('.made__in--usa-label1').addEventListener('click', () => console.log('clicked'));
-let isUSACheck_d = JSON.parse(localStorage.getItem('isUSACheck'));	
-	
-if (isUSACheck_d && window.location.href.indexOf('product_tag=usa') < 0 ) {
-	 window.location.assign(window.location.href+'?swoof=1&product_tag=usa');
-}
-if (window.location.href.indexOf('product_tag=usa') > 0) {
-    document.getElementById('switch').checked = true;
-    madeInTheUSAInput.addEventListener('click', () => {
-		isUSACheck = false; 
-		localStorage.setItem('isUSACheck', isUSACheck);
-		window.location.assign(window.location.href.replace('?swoof=1&product_tag=usa',''));
-	});
-}
-	
-// if (document.getElementById('switch').checked && window.location.href.indexOf('product_tag=usa') < 0) {
-// 	window.location.assign(window.location.href+"/?swoof=1&product_tag=usa");
-// 	console.log(window.location.href);
-// 	console.log(document.getElementById('switch').checked)
-// 	} else {
-// 		console.log(window.location.href);
-// 		console.log(document.getElementById('switch').checked)
-// }
-
+const usaMadeInInput=document.querySelector(".made__in--usa-input1"),madeInTheUSAInput=document.querySelector(".made__in--usa-label1"),madeInUSACount=document.querySelector(".wpf_item_count");let usaSwitchFunc=()=>{document.querySelector(".iCheck-helper")?.click()};madeInTheUSAInput.addEventListener("click",usaSwitchFunc);let isUSACheck;isUSACheck="https://typkup.com/shop/"!==window.location.href&&(!0===JSON.parse(localStorage.getItem("isUSACheck"))||window.location.href.indexOf("product_tag=usa")>0),localStorage.setItem("isUSACheck",isUSACheck),console.log(isUSACheck),document.querySelector(".made__in--usa-label1").addEventListener("click",()=>console.log("clicked"));let isUSACheck_d=JSON.parse(localStorage.getItem("isUSACheck"));isUSACheck_d&&0>window.location.href.indexOf("product_tag=usa")&&window.location.assign(window.location.href+"?swoof=1&product_tag=usa"),window.location.href.indexOf("product_tag=usa")>0&&(document.getElementById("switch").checked=!0,madeInTheUSAInput.addEventListener("click",()=>{isUSACheck=!1,localStorage.setItem("isUSACheck",isUSACheck),window.location.href.indexOf("&really_curr_tax=")>0?window.location.replace(window.location.href.split("?")[0]):window.location.assign(window.location.href.split("?")[0])}))
 </script>
                         <div class="ssb-categories text-center">
                             <?php												
@@ -228,26 +169,9 @@ if (window.location.href.indexOf('product_tag=usa') > 0) {
 								}; 
 								?>
 								</div>
-								<script> 
-	// USA Filter Categories if they don't contain USA made products
-
-	let catDescriptionID = document.querySelector('.foldable-link').querySelectorAll('span');
-	
-	for(let i of catDescriptionID) {
-		if (i.querySelector('p') && i.querySelector('p').textContent === 'usa') {
-			console.log(i.querySelector('p').textContent);
-			let idName = 'cat'+i.classList.value;
-			document.getElementById(idName).parentElement.classList.add('usa-remove__cat');
-		}
-	}
-	let madeUSANONE = document.getElementsByClassName('usa-remove__cat');
-	if(usaMadeInInput.checked) {
-		for (let i of madeUSANONE) {
-			i.style.display = 'none';
-		}
-	} 
-							 
-								</script>
+<script> 
+let catDescriptionID=document.querySelector(".foldable-link").querySelectorAll("span"),nUSA="notusa";for(let i of catDescriptionID)if(i.querySelector("p")&&i.querySelector("p").textContent===nUSA){console.log(i.querySelector("p").textContent);let a="cat"+i.classList.value;document.getElementById(a).parentElement.classList.add("usa-remove__cat")}let catSubDescriptionID=document.getElementsByClassName(nUSA);for(let i of catSubDescriptionID)i.parentElement.classList.add("usa-remove__cat");let madeUSANONE=document.getElementsByClassName("usa-remove__cat");if(usaMadeInInput.checked)for(let i of madeUSANONE)i.style.display="none"
+</script>
 							</div>
                             <div class="ssb-links">
                                 <div class="ssb-cat-title">quick links</div>
