@@ -9,9 +9,18 @@
 			document.getElementById(idName).parentElement.classList.add('usa-remove__cat');
 		}
 	}
+	
+// 	Sub Category
+	
+	let catSubDescriptionID = document.getElementsByClassName('usa');
+	
+	for (let i of catSubDescriptionID) {
+		i.parentElement.classList.add('usa-remove__cat');
+	}
 	let madeUSANONE = document.getElementsByClassName('usa-remove__cat');
 	if(usaMadeInInput.checked) {
 		for (let i of madeUSANONE) {
 			i.style.display = 'none';
 		}
-	} 
+	}
+	
