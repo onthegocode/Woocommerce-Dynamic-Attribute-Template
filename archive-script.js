@@ -41,7 +41,9 @@ if (window.location.href.indexOf('product_tag=usa') > 0) {
     document.getElementById('switch').checked = true;
     madeInTheUSAInput.addEventListener('click', () => {
 		isUSACheck = false; 
-		localStorage.setItem('isUSACheck', isUSACheck)});
+		localStorage.setItem('isUSACheck', isUSACheck);
+		window.location.assign(window.location.href.replace('?swoof=1&product_tag=usa',''));
+	});
 }
 	
 // if (document.getElementById('switch').checked && window.location.href.indexOf('product_tag=usa') < 0) {
