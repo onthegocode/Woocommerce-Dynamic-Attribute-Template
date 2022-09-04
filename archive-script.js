@@ -42,7 +42,11 @@ if (window.location.href.indexOf('product_tag=usa') > 0) {
     madeInTheUSAInput.addEventListener('click', () => {
 		isUSACheck = false; 
 		localStorage.setItem('isUSACheck', isUSACheck);
-		window.location.assign(window.location.href.replace('?swoof=1&product_tag=usa',''));
+		if (window.location.href.indexOf('product_tag=usa&really_curr_tax=') > 0) {
+// 			console.log(true);
+		} else {
+			window.location.assign(window.location.href.replace('?swoof=1&product_tag=usa',''));
+		}	
 	});
 }
 	
