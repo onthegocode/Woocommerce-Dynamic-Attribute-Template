@@ -1,11 +1,13 @@
 //Optimized Code
+
 const checkout = {
   bill: ["billing_first_name","billing_last_name","billing_address_1","billing_city","billing_state","billing_postcode","billing_phone","billing_email","additional_referral"],
-  ship: ["shipping_address_1","shipping_city","shipping_state","shipping_postcode","shipping_phone"]
+  ship: ["shipping_address_1","shipping_city","shipping_state","shipping_postcode","shipping_phone","shipping_first_name","shipping_last_name"]
 }
   checkout.bill.forEach(mov => document.getElementById(mov).value="");
   checkout.ship.forEach(mov => document.getElementById(mov).value="");
   document.getElementById('ship-to-different-address-checkbox').checked = false;
+
 
 //Old Code
 //Variables
